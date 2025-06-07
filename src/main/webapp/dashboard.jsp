@@ -37,11 +37,32 @@
             background-color: #c82333;
             border-color: #bd2130;
         }
+        .action-button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 15px;
+            background-color: #007bff; /* Um azul padrão e bonito */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+    }
+
+.action-button:hover {
+    background-color: #0056b3; /* Um tom de azul mais escuro ao passar o mouse */
+}
         </style>
     </head>
     <body>
         <h1>Bem vindo ao Sistema de Biblioteca </h1>
         
+        <p>
+            <a href="${pageContext.request.contextPath}/emprestimos/registrarEmprestimo.jsp" class="action-button">Registrar Novo Empréstimo</a>
+        </p>
+        
         <p><a href="LogoutServlet" class="logout-button">Sair do Sistema</a></p>
+        
+        
     </body>
 </html>
