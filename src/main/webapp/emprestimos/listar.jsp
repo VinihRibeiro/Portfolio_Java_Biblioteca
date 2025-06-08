@@ -98,8 +98,8 @@
     %>
     <tr>
         <td><%= e.getId() %></td>
-        <td><%= e.getIdUsuario() %></td>
-        <td><%= e.getIdLivro() %></td>
+        <td><%= e.getUsuario().getId() %> - <%= e.getUsuario().getNome() %></td>
+        <td><%= e.getLivro().getTitulo() %></td>
         <td><%= e.getDataEmprestimo() %></td>
         <td><%= e.getDataDevolucaoPrevista() %></td>
         <td><%= e.getStatus() %></td>

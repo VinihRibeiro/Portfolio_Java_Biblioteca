@@ -47,12 +47,21 @@
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
-    }
+        }
 
-.action-button:hover {
-    background-color: #0056b3; /* Um tom de azul mais escuro ao passar o mouse */
-}
+        .action-button:hover {
+            background-color: #0056b3; /* Um tom de azul mais escuro ao passar o mouse */
+        }
+        .report-button {
+            background-color: #5a6268; /* Um cinza elegante */
+        }
+
+        .report-button:hover {
+            background-color: #4a4f54; /* Um cinza mais escuro */
+        }
+        
         </style>
+        
     </head>
     <body>
         <h1>Bem vindo ao Sistema de Biblioteca </h1>
@@ -61,7 +70,13 @@
             <a href="${pageContext.request.contextPath}/emprestimos/registrarEmprestimo.jsp" class="action-button">Registrar Novo Empréstimo</a>
         </p>
         
+        <p>
+            <a href="${pageContext.request.contextPath}/relatorioEmprestimos.jsp" class="action-button report-button">Gerar Relatório de Empréstimos</a>
+        </p>
+        
         <p><a href="LogoutServlet" class="logout-button">Sair do Sistema</a></p>
+        
+        
         
         
     </body>
