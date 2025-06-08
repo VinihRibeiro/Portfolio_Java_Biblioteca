@@ -2,8 +2,8 @@ package com.mycompany.controller;
 
 import com.mycompany.dao.EmprestimoDAO;
 import com.mycompany.model.Emprestimo;
-import com.mycompany.model.Livro;     // Import que talvez precise adicionar
-import com.mycompany.model.Usuario;   // Import que talvez precise adicionar
+import com.mycompany.model.Livro;     
+import com.mycompany.model.Usuario;   
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -56,7 +56,7 @@ public class EmprestimoServlet extends HttpServlet {
                 response.sendRedirect(request.getContextPath() + "/emprestimos");
             }
         } catch (SQLException | ParseException | NumberFormatException e) {
-            // Um tratamento de erro um pouco melhor, que captura mais exceções
+            
             throw new ServletException("Erro ao processar a ação de empréstimo.", e);
         }
     }

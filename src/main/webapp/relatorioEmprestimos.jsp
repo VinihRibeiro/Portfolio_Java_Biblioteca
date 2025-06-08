@@ -22,10 +22,10 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Classes customizadas para status, complementando Tailwind se necessário */
-        .status-ativo { background-color: #fef9c3; color: #713f12; } /* bg-yellow-100 text-yellow-800 */
-        .status-devolvido { background-color: #dcfce7; color: #166534; } /* bg-green-100 text-green-800 */
-        .status-atrasado { background-color: #fee2e2; color: #991b1b; } /* bg-red-100 text-red-800 */
+        
+        .status-ativo { background-color: #fef9c3; color: #713f12; } 
+        .status-devolvido { background-color: #dcfce7; color: #166534; } 
+        .status-atrasado { background-color: #fee2e2; color: #991b1b; } 
     </style>
 </head>
 <body class="bg-gray-100">

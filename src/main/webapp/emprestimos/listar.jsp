@@ -74,16 +74,16 @@
         }
 
         .btn-devolver:hover {
-            background-color: #218838; /* Verde mais escuro */
+            background-color: #218838; 
         }
 
-        /* Cor específica para o botão RENOVAR (Azul = Ação Primária) */
+        
         .btn-renovar {
             background-color: #007bff;
         }
 
         .btn-renovar:hover {
-            background-color: #0056b3; /* Azul mais escuro */
+            background-color: #0056b3; 
         }
     </style>
 </head>

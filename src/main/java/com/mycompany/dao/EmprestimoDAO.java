@@ -2,8 +2,8 @@ package com.mycompany.dao;
 
 import com.mycompany.model.Emprestimo;
 import com.mycompany.model.Usuario;
-import com.mycompany.model.Livro; // IMPORT ADICIONADO
-import com.mycompany.model.StatusEmprestimo; // IMPORT ADICIONADO
+import com.mycompany.model.Livro; 
+import com.mycompany.model.StatusEmprestimo; 
 import com.mycompany.model.TipoUsuario;
 import com.mycompany.util.ConnectionFactory;
 import java.util.Date;
@@ -53,8 +53,8 @@ public class EmprestimoDAO {
         String sql = "SELECT " +
                      "e.id AS emprestimo_id, e.data_emprestimo, e.data_devolucao_prevista, " +
                      "e.data_devolucao_real, e.status AS emprestimo_status, " +
-                     "u.id AS usuario_id, u.nome AS usuario_nome, " + // Adicionamos dados do usuário
-                     "l.id AS livro_id, l.titulo AS livro_titulo " +   // Adicionamos dados do livro
+                     "u.id AS usuario_id, u.nome AS usuario_nome, " + 
+                     "l.id AS livro_id, l.titulo AS livro_titulo " +   
                      "FROM emprestimos e " +
                      "JOIN usuarios u ON e.id_usuario = u.id " +
                      "JOIN livros l ON e.id_livro = l.id " +
@@ -65,27 +65,27 @@ public class EmprestimoDAO {
              ResultSet rs = stmt.executeQuery(sql)) {
 
             while (rs.next()) {
-                // 2. CRIE OS OBJETOS COMPLETOS PRIMEIRO
+                
                 Usuario usuario = new Usuario();
                 usuario.setId(rs.getInt("usuario_id"));
                 usuario.setNome(rs.getString("usuario_nome"));
-                // Se tiver mais campos em Usuario (como tipo), adicione aqui com set...
+                
 
                 Livro livro = new Livro();
                 livro.setId(rs.getInt("livro_id"));
                 livro.setTitulo(rs.getString("livro_titulo"));
-                // Se tiver mais campos em Livro (como autor), adicione aqui com set...
+                
 
-                // 3. AGORA, CRIE O EMPRÉSTIMO E ASSOCIE OS OBJETOS
+                
                 Emprestimo e = new Emprestimo();
                 e.setId(rs.getInt("emprestimo_id"));
-                e.setUsuario(usuario); // Usando o novo método setUsuario(Usuario)
-                e.setLivro(livro);     // Usando o novo método setLivro(Livro)
+                e.setUsuario(usuario); 
+                e.setLivro(livro);     
                 e.setDataEmprestimo(rs.getDate("data_emprestimo"));
                 e.setDataDevolucaoPrevista(rs.getDate("data_devolucao_prevista"));
                 e.setDataDevolucaoReal(rs.getDate("data_devolucao_real"));
                 
-                // Convertendo a String do banco para o Enum
+                
                 e.setStatus(StatusEmprestimo.valueOf(rs.getString("emprestimo_status")));
                 
                 lista.add(e);
@@ -93,7 +93,7 @@ public class EmprestimoDAO {
         }
         return lista;
     }
-    // Adicione este método dentro da sua classe EmprestimoDAO
+    
 
 public List<Emprestimo> gerarRelatorioPorData(Date dataInicio, Date dataFim) throws SQLException {
     List<Emprestimo> lista = new ArrayList<>();
@@ -116,22 +116,20 @@ public List<Emprestimo> gerarRelatorioPorData(Date dataInicio, Date dataFim) thr
 
         try (ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                // Monta o objeto Usuario
-                // Verifique se sua classe Usuario tem um construtor que aceita (int, String, TipoUsuario)
-                // Se não tiver, use o construtor vazio e os métodos set.
+                
                 TipoUsuario tipoUsuario = TipoUsuario.valueOf(rs.getString("tipo_usuario").toUpperCase());
                 Usuario usuario = new Usuario(); // Usando construtor vazio
                 usuario.setId(rs.getInt("usuario_id"));
                 usuario.setNome(rs.getString("usuario_nome"));
                 usuario.setTipo(tipoUsuario); 
 
-                // Monta o objeto Livro
-                Livro livro = new Livro(); // Usando construtor vazio
+                
+                Livro livro = new Livro(); 
                 livro.setId(rs.getInt("livro_id"));
                 livro.setTitulo(rs.getString("livro_titulo"));
                 livro.setAutor(rs.getString("livro_autor")); 
 
-                // Monta o objeto Emprestimo
+                
                 Emprestimo emprestimo = new Emprestimo();
                 emprestimo.setId(rs.getInt("emprestimo_id"));
                 emprestimo.setUsuario(usuario);
@@ -151,5 +149,5 @@ public List<Emprestimo> gerarRelatorioPorData(Date dataInicio, Date dataFim) thr
 }
 
     
-    // A CLASSE LIVRO DUPLICADA QUE ESTAVA AQUI FOI REMOVIDA.
+   
 }

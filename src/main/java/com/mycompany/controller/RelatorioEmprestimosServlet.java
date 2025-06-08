@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/relatorioEmprestimos") // É uma boa prática ter uma URL específica
+@WebServlet("/relatorioEmprestimos") 
 public class RelatorioEmprestimosServlet extends HttpServlet {
 
     @Override
@@ -25,25 +25,25 @@ public class RelatorioEmprestimosServlet extends HttpServlet {
         String dataFimStr = request.getParameter("dataFim");
         List<Emprestimo> emprestimosFiltrados = new ArrayList<>();
 
-        // Verifica se as datas foram enviadas para processar a busca
+        
         if (dataInicioStr != null && !dataInicioStr.isEmpty() && dataFimStr != null && !dataFimStr.isEmpty()) {
             try {
                 SimpleDateFormat parserSdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date dataInicioUtil = parserSdf.parse(dataInicioStr);
                 Date dataFimUtilOriginal = parserSdf.parse(dataFimStr);
 
-                // Valida a ordem das datas
+                
                 if (dataInicioUtil.after(dataFimUtilOriginal)) {
                     request.setAttribute("mensagemErro", "A data de início não pode ser posterior à data de fim.");
                 } else {
-                    // Ajusta a data final para incluir o dia inteiro (até 23:59:59)
+                    
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(dataFimUtilOriginal);
                     cal.add(Calendar.DAY_OF_MONTH, 1);
                     cal.add(Calendar.MILLISECOND, -1);
                     Date dataFimUtilAjustada = cal.getTime();
 
-                    // CHAMA O DAO PARA FAZER O TRABALHO PESADO
+                    
                     EmprestimoDAO dao = new EmprestimoDAO();
                     emprestimosFiltrados = dao.gerarRelatorioPorData(dataInicioUtil, dataFimUtilAjustada);
 
