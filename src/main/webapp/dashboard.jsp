@@ -14,7 +14,7 @@
         }
         .container {
             width: 100%;
-            max-width: 700px;
+            max-width: 800px; /* Aumentei um pouco para caber a nova seção */
             margin: 0 auto;
             background-color: #fff;
             padding: 30px 40px;
@@ -60,6 +60,7 @@
         .btn-blue { background-color: #007bff; }
         .btn-orange { background-color: #fd7e14; }
         .btn-purple { background-color: #6f42c1; }
+        .btn-teal { background-color: #20c997; } /* Nova cor para Agenda */
         .btn-red { background-color: #dc3545; }
         
         .logout-container {
@@ -71,6 +72,12 @@
 <body>
     <div class="container">
         <h1>Dashboard da Biblioteca</h1>
+
+        <%-- Seção de Gestão de Usuários (Agenda) --%>
+        <h2>Gestão de Usuários</h2>
+        <div class="actions-grid">
+            <a href="${pageContext.request.contextPath}/agenda" class="action-button btn-teal">Gerenciar Usuários (Agenda)</a>
+        </div>
 
         <%-- Seção de Gestão de Livros --%>
         <h2>Gestão de Livros</h2>

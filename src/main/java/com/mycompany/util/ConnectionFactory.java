@@ -13,8 +13,8 @@ public class ConnectionFactory {
 
             // 2. Define os parâmetros da conexão
             String url = "jdbc:mysql://localhost:3306/biblioteca";
-            String usuario = "root"; // Substitua pelo seu usuário do MySQL
-            String senha = "@Ma151280"; // Substitua pela sua senha
+            String usuario = "root"; 
+            String senha = "@Ma151280"; 
 
             // 3. Retorna a conexão
             return DriverManager.getConnection(url, usuario, senha);
